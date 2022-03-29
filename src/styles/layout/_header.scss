@@ -1,0 +1,23 @@
+.header {
+  margin-top: $navbarHeight;
+  width: 100%;
+  background-color: $color-secondary-2;
+  position: relative;
+  &__home {
+    @include makeHeader(75rem);
+  }
+  &__categories {
+    @include makeHeader(33.5rem);
+  }
+  &__container {
+    width: $width-desktop-container;
+
+    //! Mixins \\\
+    @include respond(tablet) {
+      max-width: $width-tablet;
+    }
+  }
+  &__products {
+    @include makeHeader(9.6rem);
+  }
+}

@@ -1,0 +1,150 @@
+//! REFACTORED \\\
+
+.section__products {
+  display: grid;
+  grid-template-rows: 1fr 32rem 32rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 4.8rem;
+  grid-column-gap: 3rem;
+  align-items: center;
+
+  //! MIXINS \\\
+  @include respond(phone-rotated) {
+    grid-template-rows: 1fr 32rem 32rem 32rem;
+  }
+}
+
+.product {
+  //?######################  ZX( ######################?\\
+  &__zx9 {
+    grid-area: 1/1/2/3;
+    padding: 5.5rem 2.3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-primary;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    //prettier-ignore
+    @include  importAndAdjustBackground("../../../assets/home/desktop/pattern-circles.svg",-15rem,-5rem);
+    border-radius: $border-radius-default;
+
+    //! Mixins \\\
+    @include respond(desktop) {
+      @include flexColumn;
+      @include importAndAdjustBackground(
+        "../../../assets/home/desktop/pattern-circles.svg",
+        50%,
+        -28rem
+      );
+    }
+  }
+
+  //?######################  ZX7 ######################?\\
+
+  &__zx7 {
+    grid-area: 2/1/3/3;
+    align-self: stretch;
+    //prettier-ignore
+    @include  importAndAdjustBackground("../../../assets/home/desktop/image-speaker-zx7.jpg",0,0);
+    @include flexAlignCenter;
+    border-radius: $border-radius-default;
+
+    //! Mixins \\\
+    @include respond(desktop) {
+      width: 100%;
+      @include importAndAdjustBackground(
+        "../../../assets/home/tablet/image-speaker-zx7.jpg",
+        -1rem,
+        0
+      );
+      @include backgroundSizeAndPosition(cover, center);
+    }
+    @include respond(phone) {
+      width: 100%;
+      @include importAndAdjustBackground(
+        "../../../assets/home/mobile/image-speaker-zx7.jpg",
+        -1rem,
+        0
+      );
+      @include backgroundSizeAndPosition(cover, center);
+    }
+  }
+
+  //?######################  YX1 ######################?\\
+
+  &__yx1 {
+    grid-area: 3/2/4/3;
+    align-self: stretch;
+    @include flexAlignCenter;
+    background-color: $color-tertiary-dark;
+    border-radius: $border-radius-default;
+
+    //! MIXINS \\\
+    @include respond(phone-rotated) {
+      grid-area: 4/1/5/3;
+    }
+  }
+
+  //?######################  IMAGES ######################?\\
+  &__img {
+    &-zx9 {
+      height: 48rem;
+
+      background-repeat: no-repeat;
+      position: relative;
+      top: 7rem;
+      left: 12.5rem;
+
+      //! Mixins \\\
+      @include respond(desktop) {
+        @include topLeft(0, 0);
+        @include widthAndHeight(20rem, 100%);
+
+        margin-bottom: 6.4rem;
+      }
+    }
+    &-yx1 {
+      background-image: url("../../../assets/home/desktop/image-earphones-yx1.jpg");
+      @include backgroundSizeAndPosition(cover, center);
+      @include widthAndHeight(100%, 100%);
+      grid-area: 3/1/4/2;
+      border-radius: $border-radius-default;
+
+      //! MIXINS \\\
+      @include respond(desktop) {
+        background-image: url("../../../assets/home/tablet/image-earphones-yx1.jpg");
+      }
+
+      @include respond(phone-rotated) {
+        background-image: url("../../../assets/home/mobile/image-earphones-yx1.jpg");
+        grid-area: 3/1/4/3;
+      }
+    }
+  }
+
+  //?######################  TITLES ######################?\\
+  &__title {
+    &-zx9 {
+      width: 35rem;
+      justify-self: center;
+      @include flexColumnGap(2.4rem);
+
+      //! MIXINS \\\
+      @include respond(desktop) {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+    &-zx7 {
+      @include flexColumnGap(3.2rem);
+      margin-left: 9.5rem;
+    }
+    &-yx1 {
+      @extend .product__title-zx7;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+//! REFACTORED \\\
+
+.home-banner {
+  max-width: $width-desktop-container;
+  @include widthAndHeight(100%, 100%);
+  @include flexAlignCenter;
+  position: relative;
+
+  //! Mixins \\\
+  @include respond(desktop) {
+    padding: 0 4rem;
+    justify-content: center;
+  }
+
+  &::after {
+    content: "";
+    @include positionAbsoluteTopLeft(0, 0);
+    @include widthAndHeight(100%, 100%);
+    @include backgroundImageWithCustomGradient(
+      $color-secondary-2-see-through-2,
+      "../../assets/home/desktop/hero-MAIN.jpeg"
+    );
+    background-position: 45rem 0rem;
+    background-repeat: no-repeat;
+    animation: headerAnimation 3s ease-out;
+    z-index: 1;
+
+    //! Mixins \\\
+    @include respond(desktop) {
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  &__title {
+    @include flexColumnGap(2.4rem);
+    animation: moveInRight 3s ease-out;
+    z-index: 3;
+    h1 {
+      max-width: 40rem;
+    }
+
+    //! Mixins \\\
+    @include respond(desktop) {
+      align-items: center;
+    }
+  }
+
+  &__text {
+    max-width: 35rem;
+    //! Mixins \\\
+    @include respond(desktop) {
+      text-align: center;
+    }
+  }
+}

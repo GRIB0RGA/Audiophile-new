@@ -1,0 +1,91 @@
+<div class="main main__products">
+    <button class="text text--gray-dark btn__go-back" onclick="history.back()">Go back</button>
+    <div class="product-display">
+        <div class="product-display__card">
+            <picture class="product-display__image">
+                <source media="(max-width:640px)" srcset="{{currentProduct?.image?.mobile}}">
+                <source media="(max-width:850px)" srcset="{{currentProduct?.image?.tablet}}">
+                <img src="{{currentProduct?.image?.desktop}}" class="zigzag__image" alt="{{currentProduct?.slug}}">
+            </picture>
+
+
+
+            <div class="product-display__text-side">
+                <p class="overline overline--primary" *ngIf="currentProduct?.new">New product</p>
+                <h1 class="heading__2">{{currentProduct?.name}}</h1>
+                <p class="text text--gray-dark">
+                    {{currentProduct?.description}}
+                </p>
+                <h6 class="heading__6">$ {{currentProduct?.price?.toLocaleString()}}</h6>
+
+                <div class="quantity__btn-group">
+                    <div class="quantity__input-group">
+                        <button class="quantity__btn quantity__btn--minus">-</button>
+                        <input class="quantity__input" type="number" name="counter" value="1">
+                        <button class="quantity__btn quantity__btn--plus">+</button>
+                    </div>
+
+                    <button class="btn__primary btn__primary--orange" id="addToCartBtn">Add to cart</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <section class="section__features">
+        <div class="features__text">
+            <h3 class="heading__3">Features</h3>
+            <p class="text text--gray-dark">
+                <!-- {{currentProduct?.features.split("\n\n")[0]}} -->
+            </p>
+            <p class="text text--gray-dark">
+                <!-- {{currentProduct?.features.split("\n\n")[1]}} -->
+            </p>
+
+        </div>
+
+        <div class="features__box">
+            <h3 class="heading__3">In the box</h3>
+            <ul class="box__list">
+                <li class="box__item" *ngFor="let boxItem of currentProduct?.includes"><span
+                        class="box__quantity">{{boxItem.quantity}}x</span>
+                    {{boxItem.item}}
+                </li>
+
+            </ul>
+        </div>
+    </section>
+
+
+
+    <section class="section__product-gallery">
+
+        <picture class="product-gallery product-gallery__img product-gallery__img--1 ">
+            <source media="(max-width:784px)" srcset="{{currentProduct?.gallery?.first?.mobile}}">
+            <source media="(max-width:1110px)" srcset="{{currentProduct?.gallery?.first?.tablet}}">
+            <img class="product-gallery product-gallery__img product-gallery__img--1 "
+                src="{{currentProduct?.gallery?.first?.desktop}}" alt="gallery-img-1">
+        </picture>
+
+        <picture class=" product-gallery product-gallery__img product-gallery__img--2 ">
+            <source media="(max-width:784px)" srcset="{{currentProduct?.gallery?.second?.mobile}}">
+            <source media="(max-width:1110px)" srcset="{{currentProduct?.gallery?.second?.tablet}}">
+            <img class="product-gallery product-gallery__img product-gallery__img--2 "
+                src="{{currentProduct?.gallery?.second?.desktop}}" alt="gallery-img-2">
+        </picture>
+
+
+
+        <picture class="product-gallery product-gallery__img product-gallery__img--3 ">
+            <source media="(max-width:784px)" srcset="{{currentProduct?.gallery?.third?.mobile}}">
+            <source media="(max-width:1110px)" srcset="{{currentProduct?.gallery?.third?.tablet}}">
+            <img class="product-gallery product-gallery__img product-gallery__img--3"
+                src="{{currentProduct?.gallery?.third?.desktop}}" alt="gallery-img-3">
+        </picture>
+    </section>
+
+    <app-section-categories></app-section-categories>
+    <app-section-about></app-section-about>
+
+</div>

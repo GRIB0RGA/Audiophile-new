@@ -1,0 +1,258 @@
+//! REFACTORED \\\
+
+%navbarType {
+  width: 100%;
+  @include flexAlignCenter;
+}
+%navbarScreenType {
+  @extend %navbarType;
+  justify-content: space-between;
+}
+.navbar {
+  @include positionFixedTopLeft(0, 0);
+  @include widthAndHeight(100%, $navbarHeight);
+  @include flexAlignAndJustifyCenter;
+  background-color: $color-secondary-2;
+  z-index: 1111;
+  &__container {
+    width: $width-desktop-container;
+    padding: 0rem 2rem;
+    @extend %navbarScreenType;
+  }
+  &__list {
+    @include flexAlignCenterWithGap(3.4rem);
+
+    //! Mixins \\\
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+  &__link {
+    @include linksAndBtn;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__logo {
+    cursor: pointer;
+    //! Mixins \\\
+    @include respond(tablet) {
+      display: none;
+    }
+    @include respond(phone) {
+      display: block;
+    }
+  }
+
+  &__icon {
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+      content: attr(data-itemsInCart);
+      font-size: 11px;
+      background-color: $color-primary;
+      color: $color-tertiary;
+      border-radius: 50%;
+      z-index: 1111;
+      @extend .text;
+      @include sameWidthAndHeight(15px);
+      @include flexAlignAndJustifyCenter;
+      @include positionAbsoluteTopRight(-5px, -5px);
+    }
+  }
+
+  &__tablet-image-group {
+    display: none;
+    //! Mixins \\\
+    @include respond(tablet) {
+      @include flexAlignCenterWithGap(4.2rem);
+    }
+    @include respond(phone) {
+      display: none;
+    }
+  }
+
+  &__hamburger {
+    display: none;
+
+    &,
+    &--tablet {
+      cursor: pointer;
+    }
+    //! Mixins \\\
+    @include respond(phone) {
+      display: block;
+    }
+
+    &--tablet {
+      //! Mixins \\\
+      @include respond(tablet) {
+        display: block;
+      }
+    }
+  }
+
+  //   //?######################  Menu ######################?\\
+  &__menu {
+    min-height: 35rem;
+    width: 100%;
+    background-color: $color-tertiary;
+    position: absolute;
+    top: $navbarHeight;
+    left: 0;
+    z-index: 1111;
+    background-color: $color-tertiary;
+    padding: 15rem 0;
+    transition: all 1s;
+    //! Mixins \\\
+    @include respond(min-tablet) {
+      display: none;
+    }
+  }
+
+  //?######################  FOOTER ######################?\\
+  &__footer {
+    @extend %navbarScreenType;
+
+    //! MIXINS \\\
+    @include respond(phone-rotated) {
+      flex-direction: column;
+      gap: 5.2rem;
+      & .navbar__list {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+// .navbar {
+//   @include positionFixedTopLeft(0, 0);
+//   width: 100%;
+//   background-color: $color-secondary-2;
+//   display: flex;
+//   justify-content: center;
+//   min-height: 9.6rem;
+//   z-index: 999;
+//   &__container {
+//     height: 9.6rem;
+//     max-width: $width-default;
+//     width: 100%;
+
+//     @include flexAlignCenter;
+
+//     z-index: 999;
+//   }
+
+//   //?######################  DESKTOP ######################?\\
+
+//   &__desktop {
+//     @extend %navbarType;
+//     justify-content: space-between;
+
+//     //! MIXINS \\\
+
+//     @include respond(desktop) {
+//       padding: 0 4rem;
+//     }
+//     @include respond(tablet) {
+//       display: none;
+//     }
+//   }
+
+//   &__list {
+//     @include flexAlignCenterWithGap(3.4rem);
+//   }
+//   &__link {
+//     @include linksAndBtn;
+//     transition: all 0.3s;
+//     &:hover {
+//       color: $color-primary;
+//     }
+//   }
+//   &__icon {
+//     cursor: pointer;
+//     position: relative;
+//   }
+//   //?######################  Tablet ######################?\\
+
+//   &__tablet {
+//     @extend %navbarType;
+//     display: none;
+//     position: relative;
+//     //! MIXINS \\\
+
+//     @include respond(tablet) {
+//       display: flex;
+//       justify-content: space-between;
+//       padding: 0 4rem;
+//     }
+//     @include respond(phone) {
+//       display: none;
+//     }
+//   }
+//   &__logo-plus-hamburger {
+//     @include flexAlignCenterWithGap(4.2rem);
+//   }
+//   &__hamburger {
+//     cursor: pointer;
+//   }
+
+//   //?######################  Mobile ######################?\\
+//   &__mobile {
+//     @extend %navbarType;
+//     position: relative;
+//     display: none;
+
+//     //! MIXINS \\\
+//     @include respond(phone) {
+//       display: flex;
+//       justify-content: space-between;
+//       padding: 0 2.4rem;
+//     }
+//   }
+//   //?######################  Menu ######################?\\
+//   &__menu {
+//     min-height: 35rem;
+//     width: 100%;
+//     background-color: $color-tertiary;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     position: absolute;
+//     top: 9.6rem;
+//     left: 0;
+//     z-index: 999;
+
+//     @include respond(min-tablet) {
+//       display: none;
+//     }
+
+//     transition: all 1s;
+//   }
+// }
+
+// .cart__container {
+//   position: relative;
+// }
+
+// #itemsInCartCircle {
+//   background-color: $color-primary;
+//   color: $color-tertiary;
+//   height: 15px;
+//   width: 15px;
+//   border-radius: 50%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   @extend .text;
+//   font-size: 1.1rem;
+//   position: absolute;
+//   right: -5px;
+//   top: -5px;
+//   z-index: 999;
+// }

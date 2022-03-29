@@ -1,0 +1,18 @@
+<div class="cart " id="cart">
+
+    <h6 class="heading__6">Cart({{modalItems?.length}})</h6>
+
+    <button class="text text--gray-dark" (click)="removeAll()">Remove All</button>
+
+    <div class="cart__items-container">
+
+        <app-navigation-cart-item *ngFor="let modalItem of modalItems" [cartItem]="modalItem">
+        </app-navigation-cart-item>
+
+    </div>
+
+    <p class="text text--gray-dark uppercase">Total</p>
+    <h6 class="heading__6  cart__price-total"> $ {{modalItems | totalPriceCalculator}}</h6>
+
+    <button class="btn__primary btn__primary--orange" id="checkoutBtn">Checkout</button>
+</div>

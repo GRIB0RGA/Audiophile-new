@@ -1,0 +1,41 @@
+.quantity {
+  &__btn-group {
+    @include flexRowGap(1.6rem);
+  }
+  &__input-group {
+    @include widthAndHeight(12rem, 4.8rem);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: $color-tertiary-dark;
+    border-radius: $border-radius-small;
+    &--cart {
+      @include widthAndHeight(9.6rem, 3.2rem);
+    }
+  }
+  &__input {
+    font-weight: 700;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    font-size: 1.4rem;
+  }
+  &__btn {
+    color: $color-secondary-dark;
+    font-weight: 700;
+    font-size: 1.4rem;
+    opacity: 0.25;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-primary;
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    }
+  }
+}

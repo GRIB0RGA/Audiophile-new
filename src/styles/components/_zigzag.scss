@@ -1,0 +1,40 @@
+//! REFACTORED \\\
+
+.zigzag {
+  position: relative;
+  @include flexColumnAlignCenterWithGap(16rem);
+
+  //?###################### CARD ######################?\\
+  &__card {
+    @extend %item-card;
+    grid-template-areas: "a b";
+    &:nth-child(2n) {
+      grid-template-areas: "b a";
+    }
+
+    //! MIXINS \\\
+    @include respond(tablet) {
+      @include flexColumnAlignCenter;
+      justify-content: center;
+    }
+  }
+
+  //?###################### IMAGE ######################?\\
+  &__image {
+    grid-area: a;
+    width: 100%;
+    border-radius: $border-radius-default;
+  }
+  //?###################### TITLE ######################?\\
+  &__title {
+    grid-area: b;
+    align-self: center;
+    @include applyGapOnH2PButton;
+    max-width: 44.5rem;
+
+    @include respond(tablet) {
+      text-align: center;
+      align-items: center;
+    }
+  }
+}

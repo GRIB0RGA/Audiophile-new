@@ -1,0 +1,21 @@
+.product-display {
+  &__card {
+    @extend %item-card;
+    @include respond(phone-rotated) {
+      @include flexColumn;
+    }
+  }
+  &__image {
+    grid-area: 1/1/2/2;
+  }
+  &__text-side {
+    grid-area: 1/2/2/3;
+    align-self: center;
+    justify-self: center;
+    @include applyGapOnH2PButton;
+    max-width: 45rem;
+    @include respond(phone-rotated) {
+     align-self: flex-start;
+    }
+  }
+}

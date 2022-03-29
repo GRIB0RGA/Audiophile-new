@@ -1,0 +1,50 @@
+.section__features {
+  display: grid;
+  grid-template-columns: minmax(65rem, 1fr) 1fr;
+  justify-content: center;
+  gap: 12.5rem;
+  min-height: 32rem;
+  //! Mixins \\\
+  @include respond(desktop) {
+    @include flexColumn;
+  }
+}
+
+.features {
+  &__text {
+    @include flexColumnGap(3.2rem);
+
+    width: 100%;
+  }
+  &__box {
+    align-self: center;
+    @include flexColumnGap(3.2rem);
+    @include respond(desktop) {
+      max-width: 60%;
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @include respond(tablet) {
+      max-width: 90%;
+    }
+    @include respond(phone-rotated) {
+      flex-direction: column;
+    }
+  }
+}
+
+.box {
+  &__list {
+    @include flexColumnGap(0.8rem);
+  }
+  &__item {
+    @extend .text;
+    color: $color-secondary-light;
+    @include flexRowGap(2.1rem);
+  }
+  &__quantity {
+    color: $color-primary;
+    font-weight: 700;
+  }
+}

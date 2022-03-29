@@ -1,0 +1,13 @@
+<div class="cart__item" *ngIf="cartItem.quantity>0">
+    <div class="cart__text-side">
+        <img class="cart__img" src="./assets/cart/image-xx99-mark-two-headphones.jpg" alt="image-{{cartItem?.name}}">
+        <p class="text text--black bold cart__name">{{cartItem?.name}}</p>
+        <p class="text text--gray-dark bold cart__price-item">${{cartItem?.price.toLocaleString()}}</p>
+    </div>
+
+    <div class="quantity__input-group quantity__input-group--cart">
+        <button class="quantity__btn" (click)="onPlusMinusClick(cartItem.id,'minus')">-</button>
+        <input type="number" class="quantity__input" [(ngModel)]="cartItem.quantity">
+        <button class="quantity__btn" (click)="onPlusMinusClick(cartItem.id,'plus')">+</button>
+    </div>
+</div>

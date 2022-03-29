@@ -1,0 +1,20 @@
+<section class="zigzag">
+    <div class="zigzag__card zigzag__card " *ngFor="let item of products | getCategoryItems:currentCategory">
+        <picture>
+            <source media=" (max-width:500px)" srcset="{{item.categoryImage.mobile}}">
+            <source media="(max-width:780px)" srcset="{{item.categoryImage.tablet}}">
+            <img src="{{item.categoryImage.desktop}}" class="zigzag__image" alt="alt">
+        </picture>
+
+        <div class="zigzag__title">
+            <p class="overline overline--primary" *ngIf="item.new">new product</p>
+            <h1 class="heading__2">{{item.name}}</h1>
+            <p class="text text--gray-dark">
+                {{item.description}}
+            </p>
+
+            <button class="btn__primary btn__primary--orange mr-xs-t" (click)="goToProductDetails(item.id)">See product</button>
+        </div>
+    </div>
+
+</section>

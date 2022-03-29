@@ -1,0 +1,38 @@
+//! REFACTORED \\\
+
+.main {
+  max-width: $width-desktop-container;
+  margin: 0 auto;
+  position: relative;
+  //! Mixins \\\
+  @include respond(desktop) {
+    padding: 0 2rem;
+  }
+
+  &__home {
+    margin: 20rem auto;
+    @include flexColumnGap(16rem);
+  }
+  
+  &__products,
+  &__checkout,
+  &__categories {
+    margin: 16rem auto;
+    position: relative;
+    @include flexColumnGap(16rem);
+  }
+
+  &__products {
+    margin-top: 25.6rem;
+  }
+
+  &__checkout {
+    display: grid;
+    grid-template-columns: minmax(73rem, 100%) minmax(35rem, 100%);
+    gap: 3rem;
+    @include respond(desktop) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

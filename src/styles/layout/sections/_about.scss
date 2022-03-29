@@ -1,0 +1,39 @@
+//! REFACTORED \\\
+
+.section__about {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12.5rem;
+  min-height: 59rem;
+  align-items: center;
+
+  //! MIXINS \\\
+  @include respond(tablet) {
+    @include flexColumnReverse;
+  }
+}
+
+.about {
+  &__title {
+    @include applyGapOnH2PButton;
+
+    //! MIXINS \\\
+    @include respond(tablet) {
+      text-align: center;
+    }
+  }
+  &__image {
+    border-radius: $border-radius-default;
+    background-image: url("../../../assets/shared/desktop/image-best-gear.jpg");
+    @include widthAndHeight(100%, 100%);
+    @include backgroundSizeAndPosition(contain, left);
+    background-repeat: no-repeat;
+
+    //! MIXINS \\\
+    @include respond(tablet) {
+      background-image: url("../../../assets/shared/tablet/image-best-gear.jpg");
+      @include backgroundSizeAndPosition(cover, top);
+      height: 30rem;
+    }
+  }
+}
