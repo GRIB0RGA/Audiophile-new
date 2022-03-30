@@ -1,12 +1,6 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfirmationService } from 'primeng/api';
+
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -15,20 +9,14 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-  // @Output() overlayStatus = new EventEmitter<boolean>();
-  // @Output() clieckedPage = new EventEmitter<string>();
-
+  
   @ViewChild('itemsInCart') cartCircle: ElementRef | undefined;
 
   count: number | undefined;
 
   navigationButtonType: string = '';
   overlayIsOn = false;
-  constructor(
-    private cartService: CartService,
-    private router: Router,
-    private confirmationService: ConfirmationService
-  ) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.cartService.updateCart$.subscribe((data) => {
@@ -39,14 +27,10 @@ export class NavigationComponent {
   onNavigationButtonClick(type: any) {
     if (this.navigationButtonType === type) {
       this.navigationButtonType = '';
-
       this.overlayIsOn = false;
     } else {
       this.navigationButtonType = type;
-      this.confirmationService.confirm({
-        message: 'bla',
-        dismissableMask: true,
-      });
+      this.overlayIsOn = true;
     }
   }
 

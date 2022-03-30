@@ -7,25 +7,23 @@ import { HeaderModule } from './header/header.module';
 import { GetCategoryItemsPipe } from './pipes/get-category-items.pipe';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { OverlayComponent } from './overlay/overlay.component';
 
 @NgModule({
   declarations: [
     SectionAboutComponent,
     SectionCategoriesComponent,
     GetCategoryItemsPipe,
+    OverlayComponent,
   ],
-  imports: [
-    CommonModule,
-    HeaderModule,
-    ConfirmDialogModule,
-    // BrowserAnimationsModule,
-  ],
+  imports: [CommonModule, HeaderModule, ConfirmDialogModule],
   exports: [
     SectionAboutComponent,
     SectionCategoriesComponent,
     HeaderModule,
     GetCategoryItemsPipe,
     ConfirmDialogModule,
+    OverlayComponent,
   ],
   providers: [ConfirmationService],
 })

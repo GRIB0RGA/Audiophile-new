@@ -1,4 +1,4 @@
-<nav class="navbar" >
+<nav class="navbar">
 
     <div class="navbar__container">
 
@@ -10,6 +10,7 @@
         <img class="navbar__hamburger" src="./assets/shared/tablet/icon-hamburger.svg" alt="icon-hamburger">
         <img class="navbar__logo" src="./assets/shared/desktop/logo.svg" alt="Logo">
 
+
         <ul class="navbar__list">
             <li #home class="navbar__link" (click)="changePage(home)">Home</li>
             <li #headphones class="navbar__link" (click)="changePage(headphones)">Headphones</li>
@@ -17,17 +18,19 @@
             <li #earphones class="navbar__link" (click)="changePage(earphones)">Earphones</li>
         </ul>
 
-        <picture #itemsInCart [attr.data-itemsInCart]="count" class="navbar__icon "
+        <picture #itemsInCart [attr.data-itemsInCart]="count" class="navbar__icon"
             (click)="onNavigationButtonClick('cart')">
             <img src="./assets/shared/desktop/icon-cart.svg" alt="cartIcon">
         </picture>
     </div>
 
-    <app-navigation-dropdown-menu></app-navigation-dropdown-menu>
+    <div class="navbar__menu">
+        <app-section-categories></app-section-categories>
+    </div>
 
     <app-navigation-cart-modal *ngIf="navigationButtonType==='cart'"></app-navigation-cart-modal>
 
-    <p-confirmDialog></p-confirmDialog>
+
 
 </nav>
 

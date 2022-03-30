@@ -16,4 +16,7 @@ export class DataService {
   getCurrentProduct(id: number) {
     return data.find((product: Product) => product.id === id);
   }
+
+
+  
 }

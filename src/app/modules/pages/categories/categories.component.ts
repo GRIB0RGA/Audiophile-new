@@ -12,9 +12,8 @@ export class CategoriesComponent implements OnInit {
   constructor(private activeRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.categoryName = this.activeRoute.snapshot.params['category'];
     this.activeRoute.params.subscribe((params: Params) => {
       this.categoryName = params['category'];
-    })
+    });
   }
 }

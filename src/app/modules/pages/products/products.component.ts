@@ -17,10 +17,10 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let id = this.activeRoute.snapshot.params['id'];
-    this.currentProduct = this.dataService.getCurrentProduct(+id);
+    // let id = this.activeRoute.snapshot.params['id'];
+    // this.currentProduct = this.dataService.getCurrentProduct(+id);
     this.activeRoute.params.subscribe((params: Params) => {
-      id = params['id'];
+      const id = params['id'];
       this.currentProduct = this.dataService.getCurrentProduct(+id);
     });
 

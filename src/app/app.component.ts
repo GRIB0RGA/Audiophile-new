@@ -35,11 +35,16 @@ export class AppComponent {
   constructor(private storageService: StorageService) {}
   ngOnInit(): void {
     updateStorage(STORAGE_KEY, this.setLocalStorageIfEmpty());
+    
   }
 
   setLocalStorageIfEmpty() {
     return this.storageService.get(STORAGE_KEY)
       ? this.storageService.get(STORAGE_KEY)
       : localSt;
+  }
+
+  ngOnDestroy(): void {
+    this.storageService.set('bla', 1);
   }
 }
